@@ -2,13 +2,15 @@ import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import { memo, ReactNode, VFC } from "react";
 
 type Props = {
+  id: number;
   imageUrl: string;
   userName: string;
   fullName: string;
+  onClick: (id: number) => void
 }
 
 export const UserCard: VFC<Props> = memo((props) => {
-  const {imageUrl, userName, fullName} = props;
+  const {id, imageUrl, userName, fullName, onClick} = props;
   return (
     <Box 
       w="260px"
@@ -17,6 +19,7 @@ export const UserCard: VFC<Props> = memo((props) => {
       borderRadius="10px"
       shadow="md" p={4}
       _hover={{cursor: "pointer", opacity: 0.8}}
+      onClick={() => onClick(id)}
     >
       <Stack textAlign="center">
         <Image
